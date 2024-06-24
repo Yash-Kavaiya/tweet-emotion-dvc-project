@@ -1,0 +1,15 @@
+stages:
+  data_ingestion:
+    cmd: python Code/data_ingestion.py
+    deps:
+    - Code/data_ingestion.py
+    outs:
+    - data/raw
+
+  data_preprocessing:
+    cmd: python Code/data_preprocessing.py
+    deps:
+    - Code/data_preprocessing.py
+    - data/raw
+    outs:
+    - data/processed
