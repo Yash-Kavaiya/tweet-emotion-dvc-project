@@ -3,6 +3,8 @@ stages:
     cmd: python Code/data_ingestion.py
     deps:
     - Code/data_ingestion.py
+    params:
+    - data_ingestion.test_size
     outs:
     - data/raw
 
@@ -18,6 +20,8 @@ stages:
     deps:
     - Code/feature_engineering.py
     - data/processed
+    params:
+    - feature_engineering.max_features
     outs:
     - data/features
   model_building:
@@ -25,6 +29,9 @@ stages:
     deps:
     - Code/model_building.py
     - data/features
+    params:
+    - model_building.n_estimators
+    - model_building.learning_rate
     outs:
     - model.pkl
   model_evaluation:
